@@ -1,8 +1,8 @@
 {
   "name": "timestamp",
   "version": "0.0.1",
-  "description": "FCC timestamp node app",
-  "main": "index.js",
+  "description": "FCC timestamp node application",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,13 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/Cheezily/FCC-timestamp-heroku.git"
   },
-  "author": "philip michaels",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Cheezily/FCC-timestamp-heroku/issues"
   },
-  "homepage": "https://github.com/Cheezily/FCC-timestamp-heroku#readme",
-  "dependencies": {
-    "express": "^4.13.4"
-  }
+  "homepage": "https://github.com/Cheezily/FCC-timestamp-heroku#readme"
 }

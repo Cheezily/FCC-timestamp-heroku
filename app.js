@@ -27,7 +27,7 @@ function sendTime(url) {
   //checks if the url parameter starts with a number
   //and is the same length as unix time (10 characters)
   if (Number.isInteger(parseInt(param.charAt(0))) &&
-    param.length === 10) {
+    param.length <= 10) {
 
     var date = new Date(param * 1000);
     var natural = months[date.getMonth()]

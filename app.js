@@ -135,6 +135,6 @@ function checkNaturalDate(param) {
     return [1, monthToTest, dayNumber, yearNumber];
 }
 
-var portNumber = process.env.port || 3000
+var portNumber = process.env.PORT || 3000
 server.listen(portNumber);
 console.log("Listening on port " + portNumber.toString());

@@ -1,20 +1,39 @@
 var http = require('http');
 var fs = require('fs');
+var path = require('path');
 var months = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'];
 
 var server = http.createServer(function(req, res) {
+
+  //feed static files if at the home url or a file is requested. Pass the url
+  //to another function if there is no file extension at the end of the
+  //request.  This allows the html/css/js files to be served if they exist,
+  //not just the index html file.
   var url = req.url;
 
-  //feed static index.html if at the home url or pass the url
-  //to another function if there is anything attached to it
-  if (url === '/') {
-    fs.readFile('./static/index.html', function(err, html) {
+  if (url === '/' || path.extname(url)) {
+
+    var fileRequested = "./static" + url;
+    if (fileRequested == "./static/") {
+      fileRequested = "./static/index.html";
+    }
+
+    fs.readFile(fileRequested, function(err, html) {
       if (err) throw err;
-      res.writeHeader(200, {"Content-Type": "text/html"});
+      if (path.extname(fileRequested) == ".html") {
+        res.writeHeader(200, {"Content-Type": "text/html"});
+      }
+      if (path.extname(fileRequested) == ".css") {
+        res.writeHeader(200, {"Content-Type": "text/css"});
+      }
+      if (path.extname(fileRequested) == ".js") {
+        res.writeHeader(200, {"Content-Type": "application/javascript"});
+      }
       res.write(html);
       res.end();
-    })
+    });
+
   } else {
     res.end(JSON.stringify(sendTime(url)));
   }
